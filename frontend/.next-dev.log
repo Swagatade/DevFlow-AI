@@ -1,0 +1,50 @@
+
+> devflow-ai-frontend@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3000
+
+   ▲ Next.js 15.5.18
+   - Local:        http://127.0.0.1:3000
+   - Network:      http://127.0.0.1:3000
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+ ✓ Starting...
+ ✓ Ready in 1772ms
+ ○ Compiling /login ...
+ ✓ Compiled /dashboard in 5.1s (1815 modules)
+ GET /dashboard 200 in 5639ms
+ GET /login 200 in 6178ms
+ GET / 200 in 7474ms
+ GET / 200 in 660ms
+ GET / 200 in 756ms
+ GET /login 200 in 56ms
+ GET /dashboard 200 in 38ms
+ GET /dashboard 200 in 30ms
+ GET /dashboard 200 in 39ms
+ GET /dashboard 200 in 33ms
+ GET /dashboard 200 in 31ms
+ GET /dashboard 200 in 35ms
+ GET /dashboard 200 in 22ms
+ GET /dashboard 200 in 36ms
+ GET /dashboard 200 in 37ms
+ GET /dashboard 200 in 36ms
+ ✓ Compiled in 1198ms (1783 modules)
+ ✓ Compiled in 333ms (793 modules)
+ ✓ Compiled in 718ms (1783 modules)
+ ✓ Compiled in 1367ms (1777 modules)
+ ✓ Compiled in 782ms (1769 modules)
+ ✓ Compiled in 631ms (1755 modules)
+ ✓ Compiled in 2.9s (1453 modules)
+ ✓ Compiled in 741ms (1453 modules)
+ ✓ Compiled in 1657ms (1453 modules)
+ ✓ Compiled in 1246ms (1434 modules)
+ ✓ Compiled in 1066ms (1432 modules)
+ ✓ Compiled in 966ms (1432 modules)
+ ✓ Compiled in 1886ms (1453 modules)
+ ✓ Compiled in 708ms (1439 modules)
+ ✓ Compiled in 659ms (1457 modules)
+ ✓ Compiled in 632ms (1443 modules)
+ ✓ Compiled in 521ms (1457 modules)
+ ✓ Compiled in 775ms (1457 modules)
+ ✓ Compiled in 690ms (1457 modules)
+ ✓ Compiled in 1809ms (1457 modules)

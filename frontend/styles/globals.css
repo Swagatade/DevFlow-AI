@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --background: 218 55% 5%;
+    --foreground: 210 40% 96%;
+    --surface-50: 220 34% 8%;
+    --surface-100: 220 30% 11%;
+    --surface-200: 219 24% 16%;
+    --border: 214 30% 20%;
+    --input: 214 28% 18%;
+    --ring: 178 90% 58%;
+    --primary: 178 85% 52%;
+    --primary-foreground: 217 44% 6%;
+    --accent-cyan: 188 100% 58%;
+    --accent-mint: 154 86% 58%;
+    --accent-violet: 258 92% 68%;
+    --accent-amber: 40 94% 62%;
+    --accent-rose: 350 86% 68%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth bg-background;
+  }
+
+  body {
+    @apply min-h-screen overflow-x-hidden bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-white/[0.065] shadow-inner-line backdrop-blur-xl;
+  }
+
+  .glass-panel-strong {
+    @apply border border-white/15 bg-white/[0.095] shadow-glow backdrop-blur-2xl;
+  }
+
+  .futuristic-grid {
+    background-size: 44px 44px;
+    @apply bg-grid-fade;
+  }
+
+  .noise-overlay {
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.025) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--accent-cyan) / 0.7),
+      hsl(var(--accent-violet) / 0.28),
+      hsl(var(--accent-mint) / 0.52)
+    );
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-cyan-100 to-emerald-200 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-warm {
+    @apply bg-gradient-to-r from-white via-amber-100 to-rose-200 bg-clip-text text-transparent;
+  }
+
+  .mask-fade-y {
+    mask-image: linear-gradient(to bottom, transparent, black 14%, black 84%, transparent);
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .bg-radial-cyan {
+    background: radial-gradient(
+      circle at center,
+      hsl(var(--accent-cyan) / 0.28),
+      transparent 62%
+    );
+  }
+
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanline::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    z-index: 1;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--accent-cyan) / 0.75),
+      hsl(var(--accent-violet) / 0.5),
+      transparent
+    );
+    filter: drop-shadow(0 0 10px hsl(var(--accent-cyan) / 0.55));
+    animation: devflow-scanline 5.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .flow-path {
+    stroke-dasharray: 10 14;
+    animation: devflow-dash-flow 8s linear infinite;
+  }
+
+  .meter-flow {
+    background-size: 220% 100%;
+    animation: devflow-meter-flow 3.2s linear infinite;
+  }
+
+  .status-pulse {
+    animation: devflow-status-pulse 2.8s ease-in-out infinite;
+  }
+
+  .flow-rail {
+    overflow: hidden;
+  }
+
+  .flow-rail::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: -5rem;
+    height: 5rem;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      hsl(var(--accent-cyan) / 0.86),
+      transparent
+    );
+    filter: drop-shadow(0 0 10px hsl(var(--accent-cyan) / 0.7));
+    animation: devflow-rail-flow 5.2s ease-in-out infinite;
+  }
+
+  .data-spark {
+    position: absolute;
+    inset-inline: 1rem;
+    top: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--accent-cyan) / 0.85),
+      hsl(var(--accent-mint) / 0.55),
+      transparent
+    );
+    background-size: 220% 100%;
+    opacity: 0.7;
+    animation: devflow-data-spark 3.4s linear infinite;
+  }
+
+  .data-spark.data-spark-hover {
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  .group:hover .data-spark.data-spark-hover {
+    opacity: 0.8;
+  }
+
+  @keyframes devflow-scanline {
+    0% {
+      transform: translateY(-120%);
+      opacity: 0;
+    }
+    16%,
+    70% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(38rem);
+      opacity: 0;
+    }
+  }
+
+  @keyframes devflow-dash-flow {
+    to {
+      stroke-dashoffset: -120;
+    }
+  }
+
+  @keyframes devflow-meter-flow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 220% 50%;
+    }
+  }
+
+  @keyframes devflow-status-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 hsl(var(--accent-cyan) / 0);
+    }
+    50% {
+      box-shadow: 0 0 26px 2px hsl(var(--accent-cyan) / 0.24);
+    }
+  }
+
+  @keyframes devflow-rail-flow {
+    0% {
+      transform: translateY(-12%);
+      opacity: 0;
+    }
+    20%,
+    72% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(28rem);
+      opacity: 0;
+    }
+  }
+
+  @keyframes devflow-data-spark {
+    0% {
+      background-position: -220% 0;
+      opacity: 0.2;
+    }
+    35%,
+    75% {
+      opacity: 0.8;
+    }
+    100% {
+      background-position: 220% 0;
+      opacity: 0.2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scanline::after,
+    .flow-path,
+    .flow-rail::after,
+    .meter-flow,
+    .status-pulse,
+    .data-spark {
+      animation: none !important;
+    }
+  }
+}

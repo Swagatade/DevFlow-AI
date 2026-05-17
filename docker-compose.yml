@@ -1,0 +1,92 @@
+name: ibm-bob
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ibm-bob-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bob
+      POSTGRES_USER: bob
+      POSTGRES_PASSWORD: bob_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bob -d bob"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  chroma:
+    image: chromadb/chroma:0.6.3
+    container_name: ibm-bob-chroma
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma-data:/chroma/chroma
+    environment:
+      IS_PERSISTENT: "TRUE"
+      ANONYMIZED_TELEMETRY: "FALSE"
+
+  api:
+    build:
+      context: ./apps/api
+    container_name: ibm-bob-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://bob:bob_password@postgres:5432/bob
+      CHROMA_HOST: chroma
+      CHROMA_PORT: 8000
+      OLLAMA_BASE_URL: http://ollama:11434
+      CORS_ORIGINS: http://localhost:3000
+      DEVFLOW_DOWNLOAD_DIR: /data/downloads
+    ports:
+      - "8000:8000"
+    volumes:
+      - devflow-downloads:/data/downloads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      chroma:
+        condition: service_started
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api/v1
+    container_name: ibm-bob-web
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api/v1
+      API_BASE_URL: http://api:8000/api/v1
+      AUTH_URL: http://localhost:3000
+      AUTH_TRUST_HOST: "true"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ibm-bob-ollama
+    restart: unless-stopped
+    profiles:
+      - local-llm
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+
+volumes:
+  postgres-data:
+  chroma-data:
+  ollama-data:
+  devflow-downloads:

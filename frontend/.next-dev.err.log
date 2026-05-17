@@ -1,0 +1,79 @@
+ ⨯ ./components/dashboard/DashboardHome.tsx
+Error: 
+
+Caused by:
+    0: Failed to read source code from C:\Users\swaga\Desktop\IBM BOB\frontend\components\dashboard\DashboardHome.tsx
+    1: The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/dashboard/DashboardHome.tsx
+ ⨯ ./components/dashboard/DashboardHome.tsx
+Error: 
+
+Caused by:
+    0: Failed to read source code from C:\Users\swaga\Desktop\IBM BOB\frontend\components\dashboard\DashboardHome.tsx
+    1: The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/dashboard/DashboardHome.tsx
+./app/dashboard/page.tsx
+ ⨯ ./components/dashboard/Topbar.tsx
+Error: 
+
+Caused by:
+    0: Failed to read source code from C:\Users\swaga\Desktop\IBM BOB\frontend\components\dashboard\Topbar.tsx
+    1: The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/dashboard/Topbar.tsx
+./components/dashboard/DashboardLayout.tsx
+ ⨯ ./components/dashboard/Topbar.tsx
+Error: 
+
+Caused by:
+    0: Failed to read source code from C:\Users\swaga\Desktop\IBM BOB\frontend\components\dashboard\Topbar.tsx
+    1: The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/dashboard/Topbar.tsx
+./components/dashboard/DashboardLayout.tsx
+ ⨯ ./components/dashboard/DashboardHome.tsx
+Error: 
+
+Caused by:
+    0: Failed to read source code from C:\Users\swaga\Desktop\IBM BOB\frontend\components\dashboard\DashboardHome.tsx
+    1: The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/dashboard/DashboardHome.tsx
+ ⨯ ./components/dashboard/DashboardHome.tsx
+Error: 
+
+Caused by:
+    0: Failed to read source code from C:\Users\swaga\Desktop\IBM BOB\frontend\components\dashboard\DashboardHome.tsx
+    1: The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/dashboard/DashboardHome.tsx
+./app/dashboard/page.tsx
+ ⨯ ./components/dashboard/DashboardHome.tsx
+Error: 
+
+Caused by:
+    0: Failed to read source code from C:\Users\swaga\Desktop\IBM BOB\frontend\components\dashboard\DashboardHome.tsx
+    1: The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/dashboard/DashboardHome.tsx
+ ⨯ ./components/dashboard/DashboardHome.tsx
+Error: 
+
+Caused by:
+    0: Failed to read source code from C:\Users\swaga\Desktop\IBM BOB\frontend\components\dashboard\DashboardHome.tsx
+    1: The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/dashboard/DashboardHome.tsx
+./app/dashboard/page.tsx
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Users\swaga\Desktop\IBM BOB\frontend\.next\cache\webpack\server-development\0.pack.gz_' -> 'C:\Users\swaga\Desktop\IBM BOB\frontend\.next\cache\webpack\server-development\0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: EPERM: operation not permitted, rename 'C:\Users\swaga\Desktop\IBM BOB\frontend\.next\cache\webpack\server-development\0.pack.gz_' -> 'C:\Users\swaga\Desktop\IBM BOB\frontend\.next\cache\webpack\server-development\0.pack.gz'

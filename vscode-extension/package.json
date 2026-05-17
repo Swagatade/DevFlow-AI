@@ -1,0 +1,33 @@
+{
+  "name": "devflow-ai-vscode",
+  "displayName": "DevFlow AI",
+  "description": "Connect downloaded DevFlow AI repositories to the local AI debugging backend.",
+  "version": "0.1.0",
+  "publisher": "devflow-ai",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:devflowAI.debugWorkspace",
+    "onCommand:devflowAI.askWorkspace",
+    "onCommand:devflowAI.openAnalysis"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "devflowAI.debugWorkspace",
+        "title": "DevFlow AI: Debug Current Workspace"
+      },
+      {
+        "command": "devflowAI.askWorkspace",
+        "title": "DevFlow AI: Ask About Current Workspace"
+      },
+      {
+        "command": "devflowAI.openAnalysis",
+        "title": "DevFlow AI: Open Analysis Report"
+      }
+    ]
+  }
+}
