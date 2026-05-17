@@ -23,6 +23,7 @@ ollama-data/
 
 .DS_Store
 Thumbs.db
+*.log
 .artifacts/
 frontend/.artifacts/
 .playwright-cli/
