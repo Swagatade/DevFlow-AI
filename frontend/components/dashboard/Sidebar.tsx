@@ -18,7 +18,7 @@ const navigationItems = [
   { label: "Downloads", href: "#downloads", icon: Download },
   { label: "AI Explanation", href: "#analysis", icon: SearchCode },
   { label: "AI Chat", href: "#chat", icon: MessageSquareCode },
-  { label: "Debug / VS Code", href: "#debug", icon: Bug },
+    { label: "Debug / IBM Bob", href: "#debug", icon: Bug },
 ] as const;
 
 export function Sidebar({
@@ -179,7 +179,7 @@ function Workspace({ collapsed }: { collapsed: boolean }) {
           {!collapsed ? (
             <div className="min-w-0">
               <p className="truncate text-sm font-medium text-white">Repo Analyzer</p>
-              <p className="truncate text-xs text-white/42">Ollama + VS Code</p>
+                <p className="truncate text-xs text-white/42">Ollama + IBM Bob</p>
             </div>
           ) : null}
         </div>

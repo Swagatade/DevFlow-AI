@@ -13,7 +13,6 @@ IGNORED_DIRS = {
     ".git",
     ".hg",
     ".svn",
-    ".vscode",
     ".next",
     ".nuxt",
     ".turbo",
@@ -29,6 +28,7 @@ IGNORED_DIRS = {
     "target",
     "out",
     ".idea",
+    ".ibm-bob",
 }
 
 GENERATED_FILE_NAMES = {
@@ -184,7 +184,7 @@ Use markdown tables only when comparing 3-8 compact items. Do not use raw HTML s
 Prefer sections such as Overview, How It Works, Important Files, Run Commands, Configuration, Risks, and Next Steps when they fit the question.
 If the clone only contains documentation and no runnable source code, say that clearly.
 If the user asks for debugging and there is no implementation code, explain what can be debugged from the docs and what file is missing.
-Do not treat generated files like DEVFLOW_ANALYSIS.md, DEVFLOW_DEBUG_REPORT.md, or .vscode/devflow-ai.json as source files.
+Do not treat generated files like DEVFLOW_ANALYSIS.md, DEVFLOW_DEBUG_REPORT.md, or .ibm-bob/devflow-ai.json as source files.
 Keep the answer under 450 words.
 
 Repository: {repo_name}

@@ -5,7 +5,7 @@ IBM BOB is a self-hostable AI developer operations workspace. The current DevFlo
 ## Stack
 
 - Next.js 15 App Router, TypeScript strict mode, TailwindCSS, Framer Motion, Auth.js
-- FastAPI backend for repository download, static inspection, debug reports, and VS Code handoff
+- FastAPI backend for repository download, static inspection, debug reports, and IBM Bob handoff
 - Local repository storage under `~/Downloads/DevFlow AI` by default
 - Ollama local model provider
 - Docker Compose for local self-hosting
@@ -44,6 +44,5 @@ The backend saves each downloaded repository into a unique folder under `~/Downl
 ## Architecture
 
 - `frontend` contains the dashboard UI, reusable primitives, local demo auth, and typed API client.
-- `apps/api` contains FastAPI routes, GitHub download logic, repository inspection, Ollama calls, generated markdown reports, and VS Code handoff metadata.
-- `vscode-extension` contains the VS Code command scaffold that reads `.vscode/devflow-ai.json` from downloaded repositories and calls the local DevFlow AI backend for ask/debug commands.
+- `apps/api` contains FastAPI routes, GitHub download logic, repository inspection, Ollama calls, generated markdown reports, and IBM Bob handoff metadata.
 - `docker-compose.yml` wires the open-source runtime: Postgres, Chroma, FastAPI, Next.js, and optional Ollama. The current backend does not require Postgres or Chroma for the repo-analysis flow, but the services remain available for future persistence and retrieval work.

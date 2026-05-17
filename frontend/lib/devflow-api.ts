@@ -87,12 +87,6 @@ export function debugAndOpenRepositoryInIbmBob(
   );
 }
 
-export function openRepositoryInVSCode(repositoryId: string) {
-  return request<OpenVSCodeResponse>(`/repositories/${repositoryId}/open-vscode`, {
-    method: "POST",
-  });
-}
-
 export function openRepositoryInIbmBob(repositoryId: string) {
   return request<OpenVSCodeResponse>(`/repositories/${repositoryId}/open-ibm-bob`, {
     method: "POST",

@@ -124,7 +124,7 @@ class RepositoryWorkspace:
                 "debugReportPath": None,
                 "selectedModel": ollama_result.model,
             }
-            self._write_vscode_handoff(record)
+            self._write_ibm_bob_handoff(record)
             self._write_analysis_doc(record)
             self._upsert_record(record)
             return record
@@ -184,7 +184,7 @@ class RepositoryWorkspace:
         record["debugReportPath"] = str(report_path)
         record["status"] = "Debugging Ready"
         record["lastDebugAt"] = _utc_now()
-        self._write_vscode_handoff(record)
+        self._write_ibm_bob_handoff(record)
         self._upsert_record(record)
         return {
             "repositoryId": repository_id,
@@ -195,35 +195,10 @@ class RepositoryWorkspace:
             "ollama": ollama_result.to_dict(),
         }
 
-    def open_in_vscode(self, repository_id: str) -> dict:
-        record = self._require_record(repository_id)
-        root = self._require_download(record)
-        self._write_vscode_handoff(record)
-
-        try:
-            subprocess.Popen(
-                ["code", str(root)],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-            )
-        except OSError as exc:
-            return {
-                "opened": False,
-                "downloadPath": str(root),
-                "message": f"VS Code CLI was not found: {exc}",
-                "command": f'code "{root}"',
-            }
-
-        return {
-            "opened": True,
-            "downloadPath": str(root),
-            "message": "Opened downloaded repository in VS Code.",
-        }
-
     def open_in_ibm_bob(self, repository_id: str) -> dict:
         record = self._require_record(repository_id)
         root = self._require_download(record)
-        self._write_vscode_handoff(record)
+        self._write_ibm_bob_handoff(record)
         executable = _ibm_bob_executable()
 
         if executable is None:
@@ -352,10 +327,10 @@ class RepositoryWorkspace:
             counter += 1
         return candidate
 
-    def _write_vscode_handoff(self, record: dict) -> None:
+    def _write_ibm_bob_handoff(self, record: dict) -> None:
         root = Path(record["downloadPath"])
-        vscode_dir = root / ".vscode"
-        vscode_dir.mkdir(parents=True, exist_ok=True)
+        ibm_bob_dir = root / ".ibm-bob"
+        ibm_bob_dir.mkdir(parents=True, exist_ok=True)
         handoff = {
             "platform": "DevFlow AI",
             "repositoryId": record["id"],
@@ -365,7 +340,7 @@ class RepositoryWorkspace:
             "analysisPath": record.get("analysisPath"),
             "debugReportPath": record.get("debugReportPath"),
         }
-        (vscode_dir / "devflow-ai.json").write_text(
+        (ibm_bob_dir / "devflow-ai.json").write_text(
             json.dumps(handoff, indent=2),
             encoding="utf-8",
         )

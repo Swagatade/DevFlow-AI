@@ -12,5 +12,5 @@ export const dashboardNavItems: NavItem[] = [
   { label: "Downloads", href: "/dashboard#downloads" },
   { label: "AI Explanation", href: "/dashboard#analysis" },
   { label: "AI Chat", href: "/dashboard#chat" },
-  { label: "Debug / VS Code", href: "/dashboard#debug" },
+  { label: "Debug / IBM Bob", href: "/dashboard#debug" },
 ];

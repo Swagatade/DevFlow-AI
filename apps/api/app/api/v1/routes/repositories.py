@@ -97,16 +97,6 @@ async def debug_and_open_repository_in_ibm_bob(
         raise HTTPException(status_code=502, detail=str(exc)) from exc
 
 
-@router.post("/{repository_id}/open-vscode")
-def open_repository_in_vscode(repository_id: str) -> dict:
-    try:
-        return workspace.open_in_vscode(repository_id)
-    except KeyError as exc:
-        raise HTTPException(status_code=404, detail=str(exc)) from exc
-    except RepositoryWorkspaceError as exc:
-        raise HTTPException(status_code=502, detail=str(exc)) from exc
-
-
 @router.post("/{repository_id}/open-ibm-bob")
 def open_repository_in_ibm_bob(repository_id: str) -> dict:
     try:

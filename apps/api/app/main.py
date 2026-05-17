@@ -10,7 +10,7 @@ settings = get_settings()
 app = FastAPI(
     title=settings.app_name,
     version="0.1.0",
-    description="Repository download, Ollama analysis, and VS Code handoff API.",
+    description="Repository download, Ollama analysis, and IBM Bob handoff API.",
 )
 
 app.add_middleware(
